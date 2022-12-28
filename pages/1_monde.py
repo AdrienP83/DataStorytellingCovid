@@ -8,6 +8,11 @@ import folium
 from folium.plugins import MarkerCluster
 from folium.plugins import HeatMap
 from datetime import datetime
+import pydeck as pdk
+import altair as alt
+import time
+from vega_datasets import data
+import plotly.express as px
 
 df = pd.read_csv('.\owid\dataset_covid_world.csv')
 covid_final = df.loc[df['date'] == df['date'].max(), ['country','latitude','longitude','total_cases_per_million','total_vaccinations_per_hundred','total_deaths_per_million','new_cases']]
@@ -68,18 +73,20 @@ st.write('NOMBRE DE VACCINATIONS DANS LE MONDE - ',nb_vaccin)
 
 st.sidebar.subheader('Analyses à travers une carte - Folium')
 
+st.subheader("Vue d'enssemble sur l'évolution du Covid-19 dans le monde")    
+
 select = st.sidebar.selectbox('Choissisez le type de carte',['Cas confirmés (en millions)','Vaccinations (en milliers)','Morts (en millions)'],key='1')
 
 
 if not st.sidebar.checkbox("Cacher la carte",True):
     
     if select == "Cas confirmés (en millions)": 
-        folium_static(m4)
+        folium_static(m4,width=1000,height=600)
         
 
     elif select == "Vaccinations (en milliers)":
         
-        folium_static(m)
+        folium_static(m,width=1000,height=600)
         
         
     else:
@@ -89,7 +96,75 @@ if not st.sidebar.checkbox("Cacher la carte",True):
         long=covid_final['longitude'].astype(float)
         
         m2.add_child(HeatMap(zip(lat,long,deaths),radius=0))
-        folium_static(m2)
+        folium_static(m2,width=1000,height=600)
+
+fig = px.bar(df[((df['location']== 'World'))], y='new_cases',x='date',color='location')
+fig.update_layout(title='Nouveaux cas confirmés dans le monde',xaxis_title='Pays',template="plotly_dark",height=200,width=400)
+st.plotly_chart(fig)
+
+#dataframe pour chart 1
+
+df1 = df.loc[df['location'] == 'France', ['location','weekly_hosp_admissions','date']]
+
+df1.head(10)
+
+
+def get_chartAll(data):
+    hover = alt.selection_single(
+        fields=["date"],
+        nearest=True,
+        on="mouseover",
+        empty="none",
+    )
+
+    lines = total_cases_graph = alt.Chart(data[data['location'] == data['location']]).mark_circle().encode(
+    ).mark_line().encode(
+        x=alt.X('date', type='nominal'),
+        y=alt.Y('weekly_hosp_admissions'),
+        color='location',
+    ).properties(
+        width=1000,
+        height=600,
+    )
+    # Draw points on the line, and highlight based on selection
+    points = lines.transform_filter(hover).mark_circle(size=65)
+
+    # Draw a rule at the location of the selection
+    tooltips = (
+        alt.Chart(data)
+        .mark_rule()
+        .encode(
+            x="date",
+            y="weekly_hosp_admissions",
+            opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+            tooltip=[
+                alt.Tooltip('location',title="Pays"),
+                alt.Tooltip("date", title="Date"),
+                alt.Tooltip("weekly_hosp_admissions", title="Hospitalisation hebdomadaire"),
+            ],
+        )
+        .add_selection(hover)
+    )
+    return (lines + points + tooltips).interactive()
+
+
+
+st.sidebar.subheader('Analyse à travers des graphes - Plotly')
+
+chart = get_chartAll(df[((df['location']== 'United States')|(df['location']== 'France')|(df['location']== 'Canada')|(df['location']== 'Italy')|(df['location']== 'United Kingdom')|(df['location']== 'Spain'))])  
+
+if not st.sidebar.checkbox("Cacher les graphe",True):
+    
+    st.subheader("Nombre d'hospitalisations hebdomadaire dans le monde")    
+
+    st.altair_chart(
+        (chart).interactive(),
+        use_container_width=True  
+    )
+df10 = df[((df['location']== 'World'))]
+dfc = df10.groupby('location')['date','total_vaccinations','new_vaccinations_smoothed'].max().sort_values(by='total_vaccinations',ascending=False).reset_index()
+
+
 
 
 #41827835.0
