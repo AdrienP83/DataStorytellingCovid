@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 st.set_page_config(
     page_title="Accueil",
     page_icon="🏠",
@@ -33,3 +34,10 @@ df = pd.DataFrame({
 
 df
 >>>>>>> 5dcf616 (test show df)
+=======
+st.write("Here's our first attempt at using data to create a table:")
+st.write(pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40]
+}))
+>>>>>>> 400557e (st.Write() test)
