@@ -1,4 +1,5 @@
 import streamlit as st
+<<<<<<< HEAD
 from streamlit_folium import folium_static
 import pandas as pd
 import numpy as np 
@@ -197,3 +198,8 @@ dfc = df10.groupby('location')['date','total_vaccinations','new_vaccinations_smo
 #     max_value=end_date,
 #     format="DD/MM/YYYY"
 #)
+=======
+
+st.markdown("# Page monde 🌍")
+st.sidebar.markdown("# Page monde 🌍")
+>>>>>>> cc9f0f5 (ordering pages)

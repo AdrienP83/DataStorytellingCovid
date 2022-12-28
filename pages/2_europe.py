@@ -1,4 +1,5 @@
 import streamlit as st
+<<<<<<< HEAD
 from streamlit_folium import folium_static
 import pandas as pd
 import numpy as np 
@@ -65,3 +66,8 @@ st.altair_chart(
     (chart).interactive(),
     use_container_width=True  
 )
+=======
+
+st.markdown("# Page Europe 🇪🇺")
+st.sidebar.markdown("# Page Europe 🇪🇺")
+>>>>>>> cc9f0f5 (ordering pages)
