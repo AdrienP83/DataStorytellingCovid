@@ -202,4 +202,10 @@ dfc = df10.groupby('location')['date','total_vaccinations','new_vaccinations_smo
 
 st.markdown("# Page monde 🌍")
 st.sidebar.markdown("# Page monde 🌍")
+<<<<<<< HEAD
 >>>>>>> cc9f0f5 (ordering pages)
+=======
+
+
+st.write("ici le premier graphe d'évolution du COVID dans le monde")
+>>>>>>> 661f086 (first_commit)
