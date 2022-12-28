@@ -8,6 +8,11 @@ st.set_page_config(
     page_icon="🏠",
 )
 
+st.set_page_config(
+    page_title="Accueil",
+    page_icon="🏠",
+)
+
 st.markdown("# Accueil 🏠")
 st.sidebar.markdown("# Accueil 🏠")
 
