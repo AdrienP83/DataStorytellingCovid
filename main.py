@@ -1,5 +1,7 @@
 import streamlit as st
+import pandas as pd
 
+<<<<<<< HEAD
 st.set_page_config(
     page_title="Accueil",
     page_icon="🏠",
@@ -23,3 +25,11 @@ st.header("L'évolution de la pandémie de Covid-19 dans le monde :")
 st.write(
     "Depuis le début de la pandémie, il y a eu plus de 184 millions de cas confirmés de Covid-19 dans le monde, avec un pic de cas quotidiens atteint en janvier 2021. \n\nLes pays les plus touchés par la pandémie sont les États-Unis, l'Inde, le Brésil, le Mexique et la Russie, qui comptent ensemble près de la moitié des cas confirmés dans le monde. \n\nLes taux de mortalité varient considérablement d'un pays à l'autre et dépendent de plusieurs facteurs, tels que l'accessibilité des soins de santé, les stratégies de confinement et de distanciation sociale mises en place par les gouvernements, ainsi que la capacité des systèmes de santé à faire face à l'afflux de patients. \n\nPlusieurs vaccins contre le Covid-19 ont été développés et sont actuellement en cours de distribution dans de nombreux pays. Toutefois, la distribution des vaccins est inégale dans le monde, et certains pays en développement ont encore du mal à accéder à ces vaccins. \n\nLa pandémie a eu des répercussions économiques importantes dans le monde, avec une baisse de la croissance économique, une hausse du chômage et une augmentation de la pauvreté dans de nombreux pays. \n\nDes efforts de recherche sont toujours en cours pour comprendre la maladie et trouver de nouvelles stratégies de lutte contre le Covid-19."
 )
+=======
+df = pd.DataFrame({
+  'first column': [1, 2, 3, 4],
+  'second column': [10, 20, 30, 40]
+})
+
+df
+>>>>>>> 5dcf616 (test show df)
