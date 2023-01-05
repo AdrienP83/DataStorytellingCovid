@@ -1,0 +1,15 @@
+streamlit
+streamlit_folium
+pandas
+numpy 
+matplotlib
+plotly 
+folium
+datetime
+pydeck
+altair
+time
+vega_datasets
+plotly.express as px
+plotly.graph_objects as go
+plotly.subplots import make_subplots
