@@ -35,9 +35,9 @@ Les colonnes impactées :  “people_vaccinated_per_hundred”, “total_vaccina
 
 Le dashborad est composer de 4 pages :
  - <strong>main</strong> : résumé de la pandémie ( texte) 
- - monde : présentation de l'évolution au niveau mondial avec plusieurs graphes et cartes
- - europe : évolution des cas en europe + niveau de restriction par pays 
- - france : description et évolution de l'utilisation de l'application anti-covid 
+ - <strong>monde</strong> : présentation de l'évolution au niveau mondial avec plusieurs graphes et cartes
+ - <strong>europe</strong> : évolution des cas en europe + niveau de restriction par pays 
+ - <strong>france</strong> : description et évolution de l'utilisation de l'application anti-covid 
 
 # Techno utilisées
 
