@@ -22,7 +22,7 @@ from plotly.subplots import make_subplots
 df = pd.read_csv('owid/dataset_covid_world.csv')
 
 
-covid_final = df.loc[df['date'] == df['date'].max(), ['country','latitude','longitude','total_cases_per_million','total_vaccinations_per_hundred','total_deaths_per_million','new_cases']]
+covid_final = df.loc[df['date'] == df['date'].max(), ['location','latitude','longitude','total_cases_per_million','total_vaccinations_per_hundred','total_deaths_per_million','new_cases']]
 st.markdown("<h1 style='text-align: center; color: #ff634d;'><strong><u>Covid-19 dans le monde 🌍</u></strong></h1>", unsafe_allow_html=True)
 st.markdown("Cette Web App est un dashboard sur le Covid-19 avec comme source de données Our World In Data (OWID)", unsafe_allow_html=True)
 
@@ -64,7 +64,7 @@ geo_data=country_shapes,
 min_zoom=2,
 name='Covid-19',
 data=covid_final,
-columns=['country','total_cases_per_million'],
+columns=['location','total_cases_per_million'],
 key_on='feature.properties.name',
 fill_color='YlOrRd',
 nan_fill_color='black',
