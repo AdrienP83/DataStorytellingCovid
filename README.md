@@ -41,5 +41,4 @@ Le dashborad est composer de 4 pages :
 
 # Techno utilisées
 
-![alt text](http://url/to/img.png)
- - eurpore : 
+![Alt text](/img/jupyter.png "Jupyter")
