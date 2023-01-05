@@ -11,7 +11,7 @@ Le fichier suit un format de 1 ligne par lieu et date (un jour/semaines)
 
 Description du Dataset :  
 
-- 60 colonnes et 101 000 lignes environs (jusqu’au 01/2023) 
+- 60 colonnes et 101 000 lignes environs (jusqu’a la date du jour) 
 
 - 231 pays recenser et 6 continents 
 
