@@ -4,7 +4,7 @@ numpy
 matplotlib
 plotly 
 folium
-folium_static
+streamlit_folium
 datetime
 pydeck
 altair
