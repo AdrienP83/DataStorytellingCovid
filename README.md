@@ -30,3 +30,16 @@ Si une série entière est null alors on la remplace pour qu’elle soit quand m
 Si la série contient des valeurs null on utilise la fonction interpolate de Plotly.  
 
 Les colonnes impactées :  “people_vaccinated_per_hundred”, “total_vaccinations”, “total_deaths”, “total_deaths_per_million”, “total_cases_per_million”, “icu_patients_per_million”, “hosp_patients_per_million” 
+
+# Le dahsbord 
+
+Le dashborad est composer de 4 pages :
+ - main : résumé de la pandémie ( texte) 
+ - monde : présentation de l'évolution au niveau mondial avec plusieurs graphes et cartes
+ - europe : évolution des cas en europe + niveau de restriction par pays 
+ - france : description et évolution de l'utilisation de l'application anti-covid 
+
+# Techno utilisées
+
+![alt text](http://url/to/img.png)
+ - eurpore : 
