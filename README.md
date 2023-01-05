@@ -41,4 +41,5 @@ Le dashborad est composer de 4 pages :
 
 # Techno utilisées
 
-![Alt text](/img/jupyter.png "Jupyter")
+![Alt text](/img/jupyter.png "Jupyter") ![Alt text](/img/altair.png "Altair") ![Alt text](/img/matplotlib.jpeg "Jupyter")
+![Alt text](/img/pandas.png "Jupyter")
