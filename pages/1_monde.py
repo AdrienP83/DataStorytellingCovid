@@ -19,7 +19,7 @@ from plotly.subplots import make_subplots
 
 
 
-df = pd.read_csv('owid\dataset_covid_world.csv')
+df = pd.read_csv('owid/dataset_covid_world.csv')
 
 
 covid_final = df.loc[df['date'] == df['date'].max(), ['country','latitude','longitude','total_cases_per_million','total_vaccinations_per_hundred','total_deaths_per_million','new_cases']]
