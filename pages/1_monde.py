@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit_folium
 from streamlit_folium import folium_static
 import pandas as pd
 import numpy as np 
