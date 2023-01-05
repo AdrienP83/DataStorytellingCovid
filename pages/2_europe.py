@@ -24,6 +24,13 @@ st.sidebar.markdown("# Page Europe 🇪🇺")
 df_europe = df.loc[df['continent']== 'Europe']
 all_country = df_europe['location'].unique()
 
+nb_cas = df_europe.loc[df['date'] == df['date'].max(), 'total_cases_per_million'].sum()
+nb_vaccin = df_europe.loc[df['date'] == df['date'].max(), 'total_vaccinations_per_hundred'].sum()
+nb_mort = df_europe.loc[df['date'] == df['date'].max(), 'total_deaths_per_million'].sum()
+
+st.write('NOMBRE DE CAS CONFIRMÉS EN EUROPE - ',nb_cas)
+st.write('NOMBRE DE MORT CONFIRMÉES EN EUROPE - ',nb_mort)
+st.write('NOMBRE DE VACCINATIONS EN EUROPE - ',nb_vaccin)
 
 #widgets
 subset_data = df_europe
@@ -33,10 +40,13 @@ country_name_input = st.multiselect(
 'Choix du pays',
 df_europe.groupby('location').count().reset_index()['location'].tolist())
 
+
 df_all_country = pd.DataFrame({'location':country_name_input})
 
 
+
 df_chart = pd.merge(df_europe,df_all_country,on='location')
+
 
 chkbox = st.checkbox("Tous les pays")
 

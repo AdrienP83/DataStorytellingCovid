@@ -7,7 +7,7 @@ import plotly
 import folium
 from folium.plugins import MarkerCluster
 from folium.plugins import HeatMap
-from datetime import datetime
+import datetime
 import pydeck as pdk
 import altair as alt
 import time
@@ -16,7 +16,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+
+
 df = pd.read_csv('.\owid\dataset_covid_world.csv')
+
+
 covid_final = df.loc[df['date'] == df['date'].max(), ['country','latitude','longitude','total_cases_per_million','total_vaccinations_per_hundred','total_deaths_per_million','new_cases']]
 st.markdown("<h1 style='text-align: center; color: #ff634d;'><strong><u>Covid-19 dans le monde 🌍</u></strong></h1>", unsafe_allow_html=True)
 st.markdown("Cette Web App est un dashboard sur le Covid-19 avec comme source de données Our World In Data (OWID)", unsafe_allow_html=True)
@@ -239,8 +243,77 @@ if not st.sidebar.checkbox("Cacher les graphe",True):
 df10 = df[((df['location']== 'World'))]
 dfc = df10.groupby('location')['date','total_vaccinations','new_vaccinations_smoothed'].max().sort_values(by='total_vaccinations',ascending=False).reset_index()
 
+df_map = filter_data = df[(df['date'] >= '2020-06-21') & (df['location']== 'France')].set_index("date")
+
+##selectbox widgets
+metrics =['total_cases','new_cases','total_deaths','new_deaths','total_cases_per_million','new_cases_per_million']
+
+cols = st.selectbox('Choix type de données', metrics)
+
+#let's...
+if cols in metrics:
+    metric_to_show_in_covid_Layer = cols
+
+##map
+
+#variable...
+date = datetime.date(2020,2,15)
+
+#set...
+view = pdk.ViewState(latitude=0, longitude=0, zoom=0.2,)
 
 
+#create...
+covidLayer = pdk.Layer(
+    "ScatterplotLayer",
+    data=df_map,
+    pickable=False,
+    opacity=0.3,
+    stroked=True,
+    filled=True,
+    radius_scale=10,
+    radius_min_pixels=5,
+    radius_max_pixels=60,
+    line_width_min_pixels=1,
+    get_position=["longitude", "latitude"],
+    get_radius=metric_to_show_in_covid_Layer,
+    get_fill_color=[252, 136, 3],
+    get_line_color=[255,0,0],
+    tooltip="test test",
+)
+
+#create...
+r = pdk.Deck(
+    layers=[covidLayer],
+    initial_view_state=view,
+    map_style="mapbox://styles/mapbox/light-v10",
+)
+
+#create...
+subheading = st.subheader("")
+
+#render...
+map = st.pydeck_chart(r)
+
+#update...
+for i in df['date']:
+    #increment..
+    date += datetime.timedelta(days=1)
+
+    #update..
+    covidLayer.data = df[df['date'] == date.isoformat()]
+
+    #update..
+    r.update()
+
+    #render..
+    map.pydeck_chart(r)
+
+    #update..
+    subheading.subheader("%s on : %s" % (metric_to_show_in_covid_Layer, date.strftime("%B %d, %Y")))
+
+    #wait..
+    time.sleep(0.5)
 # A neat combination of st.columns with metrics.
 
 #empty map
