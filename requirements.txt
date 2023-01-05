@@ -7,7 +7,6 @@ folium
 datetime
 pydeck
 altair
-time
 vega_datasets
 plotly.express
 plotly.graph_objects
