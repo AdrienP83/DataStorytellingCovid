@@ -8,6 +8,3 @@ datetime
 pydeck
 altair
 vega_datasets
-plotly.express
-plotly.graph_objects
-plotly.subplots
