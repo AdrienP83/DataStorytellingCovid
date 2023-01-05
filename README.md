@@ -3,7 +3,7 @@ Projet Data Science : Dresser un état des lieux de l'évolution de la pandémie
 
 `pip install streamlit-folium`
 
-#L'ensemble de données complet Our World in Data COVID-19 
+# L'ensemble de données complet Our World in Data COVID-19 
 
 Notre ensemble de données COVID-19 complet est disponible au format CSV et comprend toutes nos données historiques sur la pandémie jusqu'à la date de publication. 
 
@@ -21,7 +21,7 @@ Plusieurs valeurs sont null
 
 Deux types de variables existe ici : les dépendantes et indépendantes  
 
-#Préparation des données :  
+# Préparation des données :  
 
 On récupère l’index de toutes les valeurs null pour les remplacer par 0 ou autres.  
 
