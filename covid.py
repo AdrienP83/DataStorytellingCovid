@@ -29,13 +29,16 @@ st.markdown( "France data")
 st.bar_chart(filter_data[['total_deaths']])
 
 
-#widgets
-subset_data = df
+
 
 ### multiselect
+df_europe = df.loc[df['continent']== 'Europe']
 country_name_input = st.multiselect(
 'Country name',
-df.groupby('location').count().reset_index()['location'].tolist())
+df_europe.groupby('location').count().reset_index()['location'].tolist())
+
+#widgets
+subset_data = df_europe
 
 ##linechart
 st.subheader('Comparision of infection growth')
@@ -49,7 +52,7 @@ total_cases_graph =alt.Chart(subset_data).transform_filter(
     tooltip = 'sum(total_cases)',
 ).properties(
     width=1000,
-    height=400,
+    height=600,
 ).configure_axis(
     labelFontSize=17,
     titleFontSize=20
@@ -125,4 +128,4 @@ for i in df['date']:
     subheading.subheader("%s on : %s" % (metric_to_show_in_covid_Layer, date.strftime("%B %d, %Y")))
 
     #wait..
-    time.sleep(0.01)
+    time.sleep(0.5)
