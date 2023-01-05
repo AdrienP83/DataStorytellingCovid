@@ -4,7 +4,11 @@ numpy
 matplotlib
 plotly 
 folium
+folium_static
 datetime
 pydeck
 altair
+time
 vega_datasets
+altair
+
