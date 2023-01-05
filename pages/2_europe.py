@@ -15,7 +15,7 @@ from vega_datasets import data
 import plotly.express as px
 
 
-df = pd.read_csv('.\owid\dataset_covid_world.csv')
+df = pd.read_csv('owid/dataset_covid_world.csv')
 
 st.markdown("# Page Europe 🇪🇺")
 st.sidebar.markdown("# Page Europe 🇪🇺")
