@@ -10,4 +10,5 @@ pydeck
 altair
 vega_datasets
 altair
-
+panda_profiling
+streamlit_pandas_profiling
